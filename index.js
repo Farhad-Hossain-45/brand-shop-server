@@ -117,7 +117,7 @@ async function run() {
       }
       const result = await BrandCollection.updateOne(filter,updateProduct,options)
       res.send(result)
-      // console.log(result)
+      
     })
 
     app.delete('/cart/:id', async(req,res) => {
