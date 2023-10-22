@@ -98,6 +98,28 @@ async function run() {
       const result = await BrandCollection.insertOne(newBrand);
       res.send(result)
     })
+    app.put('/product/:id' , async(req,res) => {
+      const id = req.params.id;
+      const updatedBrand = req.body;
+      const filter = {_id : new ObjectId(id)}
+      const options = {upsert : true}
+      const updateProduct = {
+        $set: {
+          brand: updatedBrand.brand,
+          image: updatedBrand.image,
+          name: updatedBrand.name,
+          type: updatedBrand.type,
+          description: updatedBrand.description,
+          rating: updatedBrand.rating,
+          price: updatedBrand.price
+
+        }
+      }
+      const result = await BrandCollection.updateOne(filter,updateProduct,options)
+      res.send(result)
+      // console.log(result)
+    })
+
     app.delete('/cart/:id', async(req,res) => {
       const id = req.params.id;
       const query = {_id : new ObjectId(id)};
