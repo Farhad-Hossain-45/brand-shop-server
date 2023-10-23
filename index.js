@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json())
 
 
-// custom json
+
 
 const brands=
  [
@@ -53,7 +53,7 @@ app.get('/brands' , async(req,res) => {
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.exa7jan.mongodb.net/?retryWrites=true&w=majority`;
 console.log(uri)
 
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
+
 const client = new MongoClient(uri, {
   serverApi: {
     version: ServerApiVersion.v1,
@@ -64,7 +64,7 @@ const client = new MongoClient(uri, {
 
 async function run() {
   try {
-    // Connect the client to the server	(optional starting in v4.7)
+    
     await client.connect();
     const BrandCollection = client.db("BrandDB").collection('Brand');
     const CartCollection = client.db("BrandDB").collection('cart');
@@ -125,10 +125,10 @@ async function run() {
       const query = {_id : new ObjectId(id)};
       const result = await CartCollection.deleteOne(query)
       res.send(result)
-      // console.log(result)
       
+
     })
-    // Send a ping to confirm a successful connection
+    
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } finally {
