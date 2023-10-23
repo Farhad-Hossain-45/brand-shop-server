@@ -125,7 +125,8 @@ async function run() {
       const query = {_id : new ObjectId(id)};
       const result = await CartCollection.deleteOne(query)
       res.send(result)
-      console.log(result)
+      // console.log(result)
+      
     })
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
